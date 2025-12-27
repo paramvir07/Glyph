@@ -15,20 +15,24 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "./ui/textarea";
 import { Separator } from "./ui/separator";
-import {ModeToggle} from './ui/toggle'
+import { ModeToggle } from "./ui/toggle";
+import { useActionState } from "react";
+import { addNote } from "@/app/actions/user.action";
 
 const Navbar = () => {
+  const [state, action, isPending] = useActionState(
+    addNote,
+    {error: undefined}
+  )
   return (
     <>
       <div className="flex items-center justify-between my-4 mx-4">
         <div className="text-xl font-bold">Glyph</div>
         <div className="flex gap-2 justify-center items-center">
           <Dialog>
-            <form>
+            <form action={action}>
               <DialogTrigger asChild>
-                <Button
-                  variant={"default"}
-                >
+                <Button variant={"default"}>
                   <Pencil size={12} />
                   <span>New Note</span>
                 </Button>
@@ -42,19 +46,19 @@ const Navbar = () => {
                 </DialogHeader>
                 <div className="grid gap-4">
                   <div className="grid gap-3">
-                    <Label htmlFor="name-1">Title</Label>
+                    <Label htmlFor="title">Title</Label>
 
                     <Input
-                      id="name-1"
-                      name="name"
+                      id="title"
+                      name="title"
                       placeholder="Enter Title here"
                     />
                   </div>
                   <div className="grid gap-3">
-                    <Label htmlFor="username-1">Content</Label>
+                    <Label htmlFor="content">Content</Label>
                     <Textarea
-                      id="username-1"
-                      name="username"
+                      id="content"
+                      name="content"
                       placeholder="Enter Content here"
                     />
                   </div>
