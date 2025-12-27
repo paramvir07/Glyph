@@ -9,23 +9,24 @@ datasource db {
 
 model User {
   id         String  @id @default(uuid())
-  firstName  String
+  clerkId    String  @unique
+  firstName  String?
   lastName   String?
   username   String  @unique
   email      String  @unique
   profileUrl String
-  role Role @default(USER)
+  role       Role    @default(USER)
   notes      Note[]
 }
 
 model Note {
-  id      String @id @default(uuid())
-  title   String
-  Content String
+  id        String  @id @default(uuid())
+  title     String
+  Content   String
   favourite Boolean @default(false)
 
-  user    User   @relation(fields: [userId], references: [id])
-  userId  String
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
 }
 
 enum Role {
