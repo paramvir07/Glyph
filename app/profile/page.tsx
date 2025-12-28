@@ -1,4 +1,4 @@
-"use client"
+
 import {
   Field,
   FieldError,
@@ -8,16 +8,10 @@ import {
   FieldSet,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { profile } from "../actions/user.action";
 const page = () => {
-    const profile = (formData: FormData) => {
-        const name = formData.get('name')
-        const username = formData.get("username");
-        const email = formData.get("email");
-        const dob = formData.get("dob");
-        console.log({name, username, email, dob})
-    }
   return (
-    <form className="m-9" action={profile}>
+      <form className="m-9" action={ profile}>
       <FieldSet>
         <FieldLegend>Profile</FieldLegend>
         <FieldGroup>

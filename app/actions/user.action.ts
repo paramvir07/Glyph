@@ -57,3 +57,12 @@ export const getMyNotes = async () => {
 
   return myNotes;
 };
+
+export const profile = async (formData: FormData) => {
+  const name = formData.get("name");
+  const username = formData.get("username");
+  const email = formData.get("email");
+  const dob = formData.get("dob");
+
+  console.log({ name, username, email, dob });
+}
