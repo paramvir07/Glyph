@@ -13,11 +13,13 @@ export const addNote = async (formData: FormData) => {
     where: {
       clerkId: userId,
     },
+    select: {
+      id: true,
+    },
   });
   if (!user) throw new Error("Unauthorized");
-  const title = formData.get("title") as string
+  const title = formData.get("title") as string;
   const content = formData.get("content") as string;
-
 
   const note = await prisma.note.create({
     data: {
@@ -28,5 +30,30 @@ export const addNote = async (formData: FormData) => {
       },
     },
   });
-  console.log("New Note created Successfully", note)
+  console.log("New Note created Successfully", note);
+};
+
+export const getMyNotes = async () => {
+  const { userId } = await auth();
+  if (!userId) {
+    throw new Error("Unauthorized");
+  }
+  const user = await prisma.user.findUnique({
+    where: {
+      clerkId: userId,
+    },
+    select: {
+      id: true,
+    },
+  });
+  if (!user) {
+    throw new Error("Unauthorized");
+  }
+  const myNotes = await prisma.note.findMany({
+    where: {
+      userId: user.id,
+    },
+  });
+
+  return myNotes;
 };

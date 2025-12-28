@@ -8,6 +8,7 @@ export async function POST(req: NextRequest) {
     const evt = await verifyWebhook(req);
 
     const data = evt.data as UserJSON;
+    console.log(data);
     const { id, first_name, last_name, username, image_url, email_addresses } =
       data;
 

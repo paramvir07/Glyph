@@ -19,10 +19,9 @@ import { Separator } from "./ui/separator";
 import { ModeToggle } from "./ui/toggle";
 import { addNote } from "@/app/actions/user.action";
 const Navbar = () => {
-  
   return (
     <>
-      <div className="flex items-center justify-between my-4 mx-4">
+      <div className="flex items-center justify-between gap-5 my-4 mx-4 max-w-full">
         <div className="text-xl font-bold">Glyph</div>
         <div className="flex gap-2 justify-center items-center">
           <Dialog>
@@ -42,7 +41,7 @@ const Navbar = () => {
                 </DialogHeader>
                 <div className="grid gap-4">
                   <div className="grid gap-3">
-                    <Label htmlFor="title">Title *</Label>
+                    <Label htmlFor="title">Title*</Label>
 
                     <Input
                       form="note-form"
