@@ -22,7 +22,7 @@ model User {
 model Note {
   id        String  @id @default(uuid())
   title     String
-  Content   String
+  content   String?
   favourite Boolean @default(false)
 
   user   User   @relation(fields: [userId], references: [id])

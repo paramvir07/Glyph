@@ -1,3 +1,4 @@
+"use client";
 import { Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,21 +17,16 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "./ui/textarea";
 import { Separator } from "./ui/separator";
 import { ModeToggle } from "./ui/toggle";
-import { useActionState } from "react";
 import { addNote } from "@/app/actions/user.action";
-
 const Navbar = () => {
-  const [state, action, isPending] = useActionState(
-    addNote,
-    {error: undefined}
-  )
+  
   return (
     <>
       <div className="flex items-center justify-between my-4 mx-4">
         <div className="text-xl font-bold">Glyph</div>
         <div className="flex gap-2 justify-center items-center">
           <Dialog>
-            <form action={action}>
+            <form id="note-form" action={addNote}>
               <DialogTrigger asChild>
                 <Button variant={"default"}>
                   <Pencil size={12} />
@@ -46,9 +42,11 @@ const Navbar = () => {
                 </DialogHeader>
                 <div className="grid gap-4">
                   <div className="grid gap-3">
-                    <Label htmlFor="title">Title</Label>
+                    <Label htmlFor="title">Title *</Label>
 
                     <Input
+                      form="note-form"
+                      required
                       id="title"
                       name="title"
                       placeholder="Enter Title here"
@@ -57,17 +55,21 @@ const Navbar = () => {
                   <div className="grid gap-3">
                     <Label htmlFor="content">Content</Label>
                     <Textarea
+                      form="note-form"
                       id="content"
                       name="content"
                       placeholder="Enter Content here"
                     />
                   </div>
                 </div>
+
                 <DialogFooter>
                   <DialogClose asChild>
                     <Button variant="outline">Cancel</Button>
                   </DialogClose>
-                  <Button type="submit">Add Note</Button>
+                  <Button type="submit" form="note-form">
+                    Add Note
+                  </Button>
                 </DialogFooter>
               </DialogContent>
             </form>
