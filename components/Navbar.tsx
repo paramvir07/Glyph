@@ -46,7 +46,6 @@ const Navbar = () => {
                     <Input
                       form="note-form"
                       required
-                      id="title"
                       name="title"
                       placeholder="Enter Title here"
                     />
@@ -55,20 +54,20 @@ const Navbar = () => {
                     <Label htmlFor="content">Content</Label>
                     <Textarea
                       form="note-form"
-                      id="content"
                       name="content"
                       placeholder="Enter Content here"
+                      className="resize-none h-60"
                     />
                   </div>
                 </div>
 
                 <DialogFooter>
+                    <Button type="submit" form="note-form">
+                      Add Note
+                    </Button>
                   <DialogClose asChild>
                     <Button variant="outline">Cancel</Button>
                   </DialogClose>
-                  <Button type="submit" form="note-form">
-                    Add Note
-                  </Button>
                 </DialogFooter>
               </DialogContent>
             </form>
