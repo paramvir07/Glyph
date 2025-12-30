@@ -27,7 +27,7 @@ export const getMyNotes = async () => {
     });
     return myNotes;
   } catch (error) {
-    throw new Error(`error while getting my notes: ${error}`);
+    console.error(`error while getting my notes: ${error}`)
   }
 };
 

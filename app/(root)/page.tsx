@@ -19,6 +19,7 @@ export const dynamic = "force-dynamic";
 
 const page = async () => {
   const notes = await getMyNotes();
+  console.log(notes)
   return (
     <>
       <div className="flex justify-center mt-7 text-2xl font-extrabold text-primary">
