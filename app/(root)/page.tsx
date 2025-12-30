@@ -1,4 +1,3 @@
-
 import {
   Sheet,
   SheetClose,
@@ -19,14 +18,14 @@ export const dynamic = "force-dynamic";
 
 const page = async () => {
   const notes = await getMyNotes();
-  console.log(notes)
+  console.log(notes);
   return (
     <>
       <div className="flex justify-center mt-7 text-2xl font-extrabold text-primary">
         My Notes
       </div>
       <div className="flex flex-col justify-center items-center gap-3 my-5 mt-10 mb-5">
-        {notes.length === 0 && (
+        {notes?.length === 0 && (
           <div className="flex flex-col justify-center items-center gap-3 text-center">
             <div>
               You don’t have any notes yet.
@@ -36,7 +35,7 @@ const page = async () => {
             <AddNoteButton />
           </div>
         )}
-        {notes.map((note) => (
+        {notes?.map((note) => (
           <Sheet key={note.id}>
             <SheetTrigger asChild>
               <Card className="w-70">
