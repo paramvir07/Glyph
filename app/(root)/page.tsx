@@ -1,4 +1,4 @@
-import { getMyNotes, updateNotes } from "./actions/user.action";
+
 import {
   Sheet,
   SheetClose,
@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import DeleteButton from "@/components/DeleteButton";
+import { getMyNotes, updateNotes } from "../actions/user.action";
 const page = async () => {
   const notes = await getMyNotes();
 
