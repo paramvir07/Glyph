@@ -9,21 +9,22 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import DeleteButton from "@/components/DeleteButton";
 import { getMyNotes, updateNotes } from "../actions/user.action";
+
+export const dynamic = "force-dynamic";
+
 const page = async () => {
   const notes = await getMyNotes();
 
   return (
     <>
-      <div className="flex justify-center items-center mt-9 mx-9">
-        <Input placeholder="Search" className="w-70" />
+      <div className="flex justify-center m-5 text-2xl font-extrabold text-primary">
+        My Notes
       </div>
-
-      <div className="flex flex-col justify-center items-center gap-5 m-5">
+      <div className="flex flex-col justify-center items-center gap-3 m-5 ">
         {notes.map((note) => (
           <Sheet key={note.id}>
             <SheetTrigger asChild>
@@ -59,7 +60,7 @@ const page = async () => {
                   <Button
                     form="update-form"
                     type="submit"
-                    className="bg-green-800 hover:bg-green-900"
+                    variant="default"
                   >
                     Save changes
                   </Button>

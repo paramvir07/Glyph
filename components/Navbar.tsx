@@ -32,7 +32,7 @@ const Navbar = () => {
                   <span>New Note</span>
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px]">
+              <DialogContent className="sm:max-w-106.25">
                 <DialogHeader>
                   <DialogTitle>New Note</DialogTitle>
                   <DialogDescription>
